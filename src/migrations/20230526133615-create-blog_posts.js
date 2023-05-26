@@ -31,7 +31,7 @@ module.exports = {
         onDelete: 'CASCADE',
         references: {
           model: 'users',
-          key: 'id,'
+          key: 'id',
         },
       },
       published: {
