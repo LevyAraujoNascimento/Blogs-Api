@@ -3,6 +3,7 @@ const validLogin = require('./middlewares/loginValidation');
 const validDisplayName = require('./middlewares/displayNameValidation');
 const validEmail = require('./middlewares/emailValidation');
 const validPassword = require('./middlewares/passwordValidation');
+const validToken = require('./middlewares/jwtValidation');
 const controllers = require('./controllers/index');
 // ...
 
@@ -18,6 +19,8 @@ app.use(express.json());
 // ...
 
 app.post('/login', validLogin, controllers.usersController.login);
+
+app.get('/user', validToken, controllers.usersController.listAll);
 
 app.post(
   '/user',

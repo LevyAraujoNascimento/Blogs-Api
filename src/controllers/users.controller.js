@@ -48,7 +48,13 @@ const createUser = async (req, res) => {
   }
 };
 
+const listAll = async (_req, res) => {
+  const users = await usersService.listAll(); 
+  res.status(200).send(users);
+};
+
 module.exports = {
   login,
   createUser,
+  listAll,
 };
