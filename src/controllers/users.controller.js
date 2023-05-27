@@ -53,8 +53,19 @@ const listAll = async (_req, res) => {
   res.status(200).send(users);
 };
 
+const listById = async (req, res) => {
+  const { id } = req.params;
+  const user = await usersService.listById(id);
+  if (!user) {
+    res.status(404).send({ message: 'User does not exist' });
+  } else {
+    res.status(200).send(user);
+  }
+};
+
 module.exports = {
   login,
   createUser,
   listAll,
+  listById,
 };

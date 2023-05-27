@@ -22,6 +22,8 @@ app.post('/login', validLogin, controllers.usersController.login);
 
 app.get('/user', validToken, controllers.usersController.listAll);
 
+app.get('/user/:id', validToken, controllers.usersController.listById);
+
 app.post(
   '/user',
   validDisplayName,
