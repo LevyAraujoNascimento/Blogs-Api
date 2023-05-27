@@ -6,8 +6,9 @@ const User = (sequelize, DataTypes) => {
         primaryKey: true,
         type: DataTypes.INTEGER
       },
-      display_name: {
+      displayName: {
         allowNull: false,
+        field: 'display_name',
         type: DataTypes.STRING
       },
       email: {
