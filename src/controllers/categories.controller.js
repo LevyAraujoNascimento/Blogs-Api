@@ -1,4 +1,3 @@
-// const jwt = require('jsonwebtoken');
 const { categoriesService } = require('../services');
 
 const createCategory = async (req, res) => {
@@ -12,6 +11,12 @@ const createCategory = async (req, res) => {
   }
 };
 
+const listAll = async (_req, res) => {
+    const categories = await categoriesService.listAll(); 
+    res.status(200).send(categories);
+};
+
 module.exports = {
   createCategory,
+  listAll,
 };

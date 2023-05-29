@@ -33,6 +33,8 @@ app.post(
   controllers.usersController.createUser,
 );
 
+app.get('/categories', validToken, controllers.categoriesController.listAll);
+
 app.post('/categories', validToken, validName, controllers.categoriesController.createCategory);
 
 // É importante exportar a constante `app`,
