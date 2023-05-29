@@ -4,6 +4,7 @@ const validDisplayName = require('./middlewares/displayNameValidation');
 const validEmail = require('./middlewares/emailValidation');
 const validPassword = require('./middlewares/passwordValidation');
 const validToken = require('./middlewares/jwtValidation');
+const validName = require('./middlewares/nameValidation');
 const controllers = require('./controllers/index');
 // ...
 
@@ -31,6 +32,8 @@ app.post(
   validPassword,
   controllers.usersController.createUser,
 );
+
+app.post('/categories', validToken, validName, controllers.categoriesController.createCategory);
 
 // É importante exportar a constante `app`,
 // para que possa ser utilizada pelo arquivo `src/server.js`
