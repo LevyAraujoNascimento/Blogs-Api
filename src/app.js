@@ -40,6 +40,8 @@ app.post('/categories', validToken, validName, controllers.categoriesController.
 
 app.post('/post', validToken, validPost, controllers.blogPostController.createPost);
 
+app.get('/post', validToken, controllers.blogPostController.listAll);
+
 // É importante exportar a constante `app`,
 // para que possa ser utilizada pelo arquivo `src/server.js`
 module.exports = app;

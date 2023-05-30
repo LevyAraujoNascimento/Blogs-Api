@@ -1,4 +1,4 @@
-const { blogPostService, categoriesService } = require('../services');
+const { blogPostService } = require('../services');
 const { User } = require('../models');
 
 const createPost = async (req, res) => {
@@ -18,16 +18,15 @@ const createPost = async (req, res) => {
         updated: post.updated,
         published: post.published,
     };
-    
-    console.log(result);
-    
+ 
     res.status(201).send(result);
   }
 };
 
 const listAll = async (_req, res) => {
-    const categories = await categoriesService.listAll(); 
-    res.status(200).send(categories);
+    const posts = await blogPostService.listAll();
+    console.log(posts);
+    res.status(200).send(posts);
 };
 
 module.exports = {
