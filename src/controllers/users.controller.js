@@ -63,9 +63,19 @@ const listById = async (req, res) => {
   }
 };
 
+const deleteUser = async (req, res) => {
+  const result = await usersService.deleteUser(req.user);
+  if (!result) {
+    res.status(404).send({ message: 'Failed to Delete' });
+  } else {
+    res.status(204).end();
+  }
+};
+
 module.exports = {
   login,
   createUser,
   listAll,
   listById,
+  deleteUser,
 };

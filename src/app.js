@@ -26,6 +26,8 @@ app.get('/user', validToken, controllers.usersController.listAll);
 
 app.get('/user/:id', validToken, controllers.usersController.listById);
 
+app.delete('/user/me', validToken, controllers.usersController.deleteUser);
+
 app.post(
   '/user',
   validDisplayName,

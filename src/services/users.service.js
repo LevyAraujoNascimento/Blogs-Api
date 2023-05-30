@@ -30,10 +30,20 @@ const listById = async (id) => {
     return user;
 };
 
+const deleteUser = async (user) => {
+    const { id } = await User.findOne({ where: { email: user.email } });
+
+    const result = await User.destroy({
+        where: { id },
+    });
+    return result;
+};
+
 module.exports = {
   login,
   isAvailable,
   createUser,
   listAll,
   listById,
+  deleteUser,
 };
