@@ -29,7 +29,19 @@ const listAll = async (_req, res) => {
     res.status(200).send(posts);
 };
 
+const listById = async (req, res) => {
+    const { id } = req.params;
+    const [post] = await blogPostService.listById(id);
+    console.log(post);
+    if (!post) {
+        res.status(404).send({ message: 'Post does not exist' });
+    } else {
+        res.status(200).send(post);
+    }
+};
+
 module.exports = {
   createPost,
   listAll,
+  listById,
 };

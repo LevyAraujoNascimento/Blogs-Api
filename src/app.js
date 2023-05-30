@@ -42,6 +42,8 @@ app.post('/post', validToken, validPost, controllers.blogPostController.createPo
 
 app.get('/post', validToken, controllers.blogPostController.listAll);
 
+app.get('/post/:id', validToken, controllers.blogPostController.listById);
+
 // É importante exportar a constante `app`,
 // para que possa ser utilizada pelo arquivo `src/server.js`
 module.exports = app;
