@@ -10,7 +10,6 @@ module.exports = {
      */
     await queryInterface.createTable('posts_categories', {
       postId: {
-        allowNull: false,
         field: 'post_id',
         type: Sequelize.INTEGER,
         onUpdate: 'CASCADE',
@@ -19,9 +18,9 @@ module.exports = {
           model: 'blog_posts',
           key: 'id',
         },
+        primaryKey: true,
       },
       categoryId: {
-        allowNull: false,
         field: 'category_id',
         type: Sequelize.INTEGER,
         onUpdate: 'CASCADE',
@@ -30,6 +29,7 @@ module.exports = {
           model: 'categories',
           key: 'id',
         },
+        primaryKey: true,
       },
     });
   },

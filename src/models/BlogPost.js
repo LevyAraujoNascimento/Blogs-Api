@@ -1,7 +1,6 @@
 const BlogPost = (sequelize, DataTypes) => {
     const post = sequelize.define('BlogPost', {
       id: {
-        allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: DataTypes.INTEGER

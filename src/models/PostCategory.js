@@ -1,12 +1,12 @@
 const PostCategory = (sequelize, DataTypes) => {
     const postCategory = sequelize.define('PostCategory', {
       postId: {
-          allowNull: false,
-          type: DataTypes.INTEGER
-        },
+        type: DataTypes.INTEGER,
+        primaryKey: true
+      },
       categoryId: {
-        allowNull: false,
-        type: DataTypes.INTEGER
+        type: DataTypes.INTEGER,
+        primaryKey: true
       },
     },
     {
