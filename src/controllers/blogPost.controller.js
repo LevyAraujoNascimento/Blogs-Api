@@ -32,7 +32,6 @@ const listAll = async (_req, res) => {
 const listById = async (req, res) => {
     const { id } = req.params;
     const [post] = await blogPostService.listById(id);
-    console.log(post);
     if (!post) {
         res.status(404).send({ message: 'Post does not exist' });
     } else {
@@ -40,8 +39,21 @@ const listById = async (req, res) => {
     }
 };
 
+const updatePost = async (req, res) => {
+    const { id } = req.params;
+    const { title, content } = req.body;
+    const [updatedPost] = await blogPostService.updatePost(id, req.user, title, content);
+    console.log(updatedPost);
+    if (updatedPost === false) {
+        res.status(401).send({ message: 'Unauthorized user' });  
+    } else {
+        res.status(200).send(updatedPost);
+    }
+};
+
 module.exports = {
   createPost,
   listAll,
   listById,
+  updatePost,
 };

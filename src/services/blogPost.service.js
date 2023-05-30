@@ -45,8 +45,35 @@ const listById = async (id) => {
     return result;    
 };
 
+const updatePost = async (id, user, title, content) => {
+    const post = await BlogPost.findOne({
+        where: { id },
+    });
+
+    const thisUser = await User.findOne({ where: { email: user.email } });
+
+    if (thisUser.id.toString() !== post.userId.toString()) {
+      return [false];
+    }
+
+    await BlogPost.update(
+        { title, content },
+        { where: { id } },
+    );
+
+    const updatedPost = await BlogPost.findAll({
+        where: { id },
+        include: [
+            { model: User, as: 'user', attributes: { exclude: 'password' } },
+            { model: Category, as: 'categories', through: { attributes: [] } },
+        ] });
+
+    return updatedPost;
+};
+
 module.exports = {
   createPost,
   listAll,
   listById,
+  updatePost,
 };
